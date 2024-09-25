@@ -9,9 +9,9 @@ export const Header = ({ text, image }: HeaderProps) => (
   <header>
     <div className={styles.wrapper}>
       <div>
-        <img className={styles.logo} src={image} />
+        <img width={150} height={150} className={styles.logo} src={image} />
       </div>
-      <h1 className={styles.logo}>{text}</h1>
+      <h1 className={styles.title}>{text}</h1>
     </div>
   </header>
 );
