@@ -1,11 +1,11 @@
 {
   "name": "webcomponents-vite",
   "private": true,
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && cp ./src/index.d.ts ./dist",
     "build:types": "tsc --declaration ./src/Header/Header.tsx",
     "lint": "eslint .",
     "preview": "vite preview"
