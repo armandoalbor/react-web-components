@@ -19,6 +19,6 @@ customElements.define(
 customElements.define(
   "rwc-form",
   r2wc(Form, {
-    props: { onSubmit: "function" },
+    props: { handleOnSubmit: "function" },
   })
 );

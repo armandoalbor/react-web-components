@@ -1,5 +1,6 @@
-import { FC } from "react";
-import { useForm } from "react-hook-form";
+import { FC, useEffect } from "react";
+import { useForm, useWatch } from "react-hook-form";
+import "./Form.module.css";
 
 interface FormData {
   name: string;
@@ -7,19 +8,28 @@ interface FormData {
 }
 
 interface FormProps {
-  onSubmit: (data: FormData) => void;
+  handleOnSubmit: (data: FormData) => void;
 }
 
-export const Form: FC<FormProps> = () => {
+export const Form: FC<FormProps> = ({ handleOnSubmit }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    control,
   } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
-    console.log("Submit data:", data);
+    console.log("Internal submit from Form component:", data);
+
+    handleOnSubmit(data);
   };
+
+  const name = useWatch({ control, name: "name" });
+
+  useEffect(() => {
+    console.log("useEffect name updated", name);
+  }, [name]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
