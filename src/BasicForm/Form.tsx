@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { useForm, useWatch } from "react-hook-form";
-import "./Form.module.css";
+import "./BasicForm.module.css";
 
 interface FormData {
   name: string;

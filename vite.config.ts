@@ -5,6 +5,11 @@ import typescript from "@rollup/plugin-typescript";
 
 export default defineConfig(() => ({
   plugins: [react(), typescript()],
+  css: {
+    modules: {
+      localsConvention: "camelCase",
+    },
+  },
   build: {
     lib: {
       formats: ["es", "umd"],
