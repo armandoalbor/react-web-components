@@ -20776,9 +20776,9 @@ const Gk = ({ handleOnSubmit: h }) => {
     formState: { errors: L },
     control: P
   } = Wk(), k = (te) => {
-    console.log("Internal submit from Form component:", te), h(te);
+    console.log("Internal submit from Form component:", te);
     const ne = { type: "onSubmitForm", payload: te };
-    window.postMessage(ne, window.location.origin);
+    window.postMessage(ne, window.location.origin), h && h(te);
   }, S = Uk({ control: P, name: "name" });
   return ek(() => {
     console.log("useEffect name updated", S);

@@ -22,11 +22,12 @@ export const Form: FC<FormProps> = ({ handleOnSubmit }) => {
   const onSubmit = (data: FormData) => {
     console.log("Internal submit from Form component:", data);
 
-    handleOnSubmit(data);
-
     // Event bus
     const message = { type: "onSubmitForm", payload: data };
     window.postMessage(message, window.location.origin);
+
+    // Prop handler
+    if (handleOnSubmit) handleOnSubmit(data);
   };
 
   const name = useWatch({ control, name: "name" });
