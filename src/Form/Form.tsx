@@ -1,65 +1,87 @@
-import { FC, useEffect } from "react";
-import { useForm, useWatch } from "react-hook-form";
-import "./Form.module.css";
+import { FC, useState } from "react";
+import { FormProps, InputProps, WrapperFormProps } from "./models";
+import formStyles from "./Form.module.css";
 
-interface FormData {
-  name: string;
-  email: string;
+const Input: React.FC<InputProps> = ({
+  id,
+  name,
+  label,
+  placeholder,
+  value,
+  onChange,
+  required,
+}) => (
+  <div className={formStyles["cs-input"]}>
+    <input
+      type="text"
+      id={id}
+      name={name}
+      placeholder={placeholder}
+      value={value}
+      onChange={(e) => onChange && onChange(e.target.value)}
+      required={required}
+    />
+
+    {label && (
+      <label htmlFor={id} style={{ marginRight: 8 }}>
+        {label}
+      </label>
+    )}
+  </div>
+);
+
+interface FormFieldValues {
+  [key: string]: string;
 }
 
-interface FormProps {
-  handleOnSubmit: (data: FormData) => void;
-}
+const Form: React.FC<FormProps> = ({
+  fields,
+  // layout,
+  // gridTemplateColumns,
+  onSubmit,
+}) => {
+  const [values, setValues] = useState<FormFieldValues>({});
 
-export const Form: FC<FormProps> = ({ handleOnSubmit }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    control,
-  } = useForm<FormData>();
-
-  const onSubmit = (data: FormData) => {
-    console.log("Internal submit from Form component:", data);
-
-    handleOnSubmit(data);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSubmit(values);
   };
 
-  const name = useWatch({ control, name: "name" });
-
-  useEffect(() => {
-    console.log("useEffect name updated", name);
-  }, [name]);
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label htmlFor="name">Nombre:</label>
-        <input
-          id="name"
-          type="text"
-          {...register("name", { required: "Este campo es requerido" })}
-        />
-        {errors.name && <span>{errors.name.message}</span>}
-      </div>
-
-      <div>
-        <label htmlFor="email">Correo Electrónico:</label>
-        <input
-          id="email"
-          type="email"
-          {...register("email", {
-            required: "Este campo es requerido",
-            pattern: {
-              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-              message: "Formato de correo electrónico no válido",
-            },
-          })}
-        />
-        {errors.email && <span>{errors.email.message}</span>}
-      </div>
-
-      <button type="submit">Enviar</button>
+    <form onSubmit={handleSubmit} className={formStyles["form-container"]}>
+      {fields.map((field, index) => {
+        switch (field.type) {
+          case "text":
+            return (
+              <Input
+                key={index}
+                id={field.id}
+                name={field.name}
+                label={field.label}
+                placeholder={field.placeholder}
+                required
+                value={values[field.name]}
+                onChange={(value: string) => {
+                  setValues((prev) => ({ ...prev, [field.name]: value }));
+                }}
+              />
+            );
+          default:
+            return null;
+        }
+      })}
+      <button type="submit">Submit</button>
     </form>
+  );
+};
+
+export const WrapperForm: FC<WrapperFormProps> = ({ formConfig, onSubmit }) => {
+  return (
+    <Form
+      fields={formConfig.fields}
+      layout={formConfig.layout}
+      gridTemplateColumns={formConfig.gridTemplateColumns}
+      onSubmit={onSubmit}
+    />
   );
 };
