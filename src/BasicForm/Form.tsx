@@ -25,7 +25,7 @@ export const Form: FC<FormProps> = ({ handleOnSubmit }) => {
     handleOnSubmit(data);
 
     // Event bus
-    const message = { type: "onSubmitForm", data };
+    const message = { type: "onSubmitForm", payload: data };
     window.postMessage(message, window.location.origin);
   };
 

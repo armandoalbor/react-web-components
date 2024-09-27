@@ -20777,7 +20777,7 @@ const Gk = ({ handleOnSubmit: h }) => {
     control: P
   } = Wk(), k = (te) => {
     console.log("Internal submit from Form component:", te), h(te);
-    const ne = { type: "onSubmitForm", data: te };
+    const ne = { type: "onSubmitForm", payload: te };
     window.postMessage(ne, window.location.origin);
   }, S = Uk({ control: P, name: "name" });
   return ek(() => {
