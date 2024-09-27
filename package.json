@@ -1,7 +1,7 @@
 {
   "name": "webcomponents-vite",
   "private": true,
-  "version": "0.0.12",
+  "version": "0.0.13",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -17,6 +17,10 @@
     ".": {
       "import": "./dist/index.es.js",
       "require": "./dist/index.umd.js"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
     }
   },
   "files": [
