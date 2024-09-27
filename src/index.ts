@@ -10,6 +10,7 @@ import { WrapperForm } from "./Form";
 export * from "./Header";
 export * from "./BasicForm";
 export * from "./Form";
+export * from "./Theme";
 
 customElements.define(
   "rwc-header",
