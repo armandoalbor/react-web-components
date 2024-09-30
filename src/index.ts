@@ -3,6 +3,7 @@ import { Header } from "./Header";
 import { BasicButtons } from "./Button";
 import { Form } from "./BasicForm";
 import { WrapperForm } from "./Form";
+import { MultiActionAreaCard } from "./Card";
 
 // export * from "./Header";
 
@@ -13,6 +14,7 @@ export * from "./Header";
 export * from "./BasicForm";
 export * from "./Form";
 export * from "./Theme";
+export * from "./Card";
 
 customElements.define(
   "rwc-header",
@@ -36,3 +38,4 @@ customElements.define(
 );
 
 customElements.define("rwc-basic-buttons", r2wc(BasicButtons));
+customElements.define("rwc-card-example", r2wc(MultiActionAreaCard));
