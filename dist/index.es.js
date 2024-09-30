@@ -27544,7 +27544,10 @@ process.env.NODE_ENV !== "production" && (K_.propTypes = {
    */
   enableColorScheme: R.bool
 });
-const TP = () => /* @__PURE__ */ je.jsx(Yj, { theme: Wj, children: /* @__PURE__ */ je.jsx(K_, {}) }), xP = () => /* @__PURE__ */ je.jsx(TP, { children: /* @__PURE__ */ je.jsxs(L_, { spacing: 2, direction: "row", children: [
+const TP = ({ children: i }) => /* @__PURE__ */ je.jsxs(Yj, { theme: Wj, children: [
+  /* @__PURE__ */ je.jsx(K_, {}),
+  i
+] }), xP = () => /* @__PURE__ */ je.jsx(TP, { children: /* @__PURE__ */ je.jsxs(L_, { spacing: 2, direction: "row", children: [
   /* @__PURE__ */ je.jsx(nh, { variant: "text", children: "Text" }),
   /* @__PURE__ */ je.jsx(nh, { variant: "contained", children: "Contained" }),
   /* @__PURE__ */ je.jsx(nh, { variant: "outlined", children: "Outlined" })
