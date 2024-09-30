@@ -1,5 +1,6 @@
 import r2wc from "@r2wc/react-to-web-component";
 import { Header } from "./Header";
+import { BasicButtons } from "./Button";
 import { Form } from "./BasicForm";
 import { WrapperForm } from "./Form";
 
@@ -7,6 +8,7 @@ import { WrapperForm } from "./Form";
 
 // index.ts
 // export * from "./Button";
+export * from "./Button";
 export * from "./Header";
 export * from "./BasicForm";
 export * from "./Form";
@@ -32,3 +34,5 @@ customElements.define(
     props: { formConfig: "json", onSubmit: "function" },
   })
 );
+
+customElements.define("rwc-basic-buttons", r2wc(BasicButtons));
