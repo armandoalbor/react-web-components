@@ -3,7 +3,7 @@ import { Header } from "./Header";
 import { BasicButtons } from "./Button";
 import { Form } from "./BasicForm";
 import { WrapperForm } from "./Form";
-import { MultiActionAreaCard } from "./Card";
+import { MultiActionAreaCard, CardWithChild } from "./Card";
 
 // export * from "./Header";
 
@@ -39,3 +39,4 @@ customElements.define(
 
 customElements.define("rwc-basic-buttons", r2wc(BasicButtons));
 customElements.define("rwc-card-example", r2wc(MultiActionAreaCard));
+customElements.define("rwc-card-child-example", r2wc(CardWithChild));
